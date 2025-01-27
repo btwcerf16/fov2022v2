@@ -10,7 +10,7 @@ public class Player : MonoBehaviour, IDamageable
     public Vector2 moveVector;
     private StateMachine _SM;
 
-    private float _maxHealth = 10.0f;
+    private float _maxHealth = 15.0f;
     public float currentHealth;
     public float jumpForce = 10.0f;
     public float speed = 10.0f;
