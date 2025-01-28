@@ -26,7 +26,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public LayerMask groundMask;
 
-    [SerializeField] private Vector3 _groundCheckOffset;
+    
 
     private void Start()
     {
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         _SM.currentState.Update();
         moveVector.x = Input.GetAxis("Horizontal");
-        
+        CheckingGround();
         
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
@@ -89,6 +89,9 @@ public class Player : MonoBehaviour, IDamageable
             Destroy(gameObject);
         }
     }
-
+    private void CheckingGround()
+    {
+        canJump = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
+    }
 
 }

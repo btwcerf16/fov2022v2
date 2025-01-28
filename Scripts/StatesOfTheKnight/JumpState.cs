@@ -15,7 +15,7 @@ public class JumpState : State
     {
         base.Enter();
         _player.animator.SetTrigger("Jump");
-        _player.rigidbody2D.AddForce(_player.jumpForce * Vector2.down, ForceMode2D.Impulse);
+        _player.rigidbody2D.AddForce(_player.jumpForce * Vector2.up, ForceMode2D.Impulse);
         
     }
 
@@ -23,8 +23,9 @@ public class JumpState : State
     public override void Update()
     {
         base.Update();
-        _player.transform.position = new Vector2((_player.transform.position.x + _player.speed * Time.deltaTime * _player.moveVector.x)/3, _player.transform.position.y);
-
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) { _player.transform.position = new Vector2((_player.transform.position.x + _player.speed * Time.deltaTime * _player.moveVector.x) / 3, _player.transform.position.y); }
+            
+            
         if (_player.moveVector.x > 0 && !_player.faceRight || _player.moveVector.x < 0 && _player.faceRight)
         {
             _player.Flip();
